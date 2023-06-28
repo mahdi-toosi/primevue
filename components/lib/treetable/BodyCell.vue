@@ -183,8 +183,10 @@ export default {
             return this.columnProp('frozen') ? [columnStyle, bodyStyle, this.styleObject] : [columnStyle, bodyStyle];
         },
         togglerStyle() {
+            const isRtl = document.dir === 'rtl'
             return {
-                marginLeft: this.level * this.indentation + 'rem',
+                marginLeft: isRtl ? undefined : this.level * this.indentation + 'rem',
+                marginRight: isRtl ?  this.level * this.indentation + 'rem' : undefined,
                 visibility: this.leaf ? 'hidden' : 'visible'
             };
         },
